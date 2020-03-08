@@ -21,12 +21,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("users", this.users.default.users);
-    sessionStorage.setItem('users', JSON.stringify(this.users.default.users));
+
   }
 
 
   logForm(obj) {
     console.log('submitted', obj);
+    console.log("cred-CHNAGED_OBJ", JSON.parse(sessionStorage.getItem('users')))
     let filteredObj = JSON.parse(sessionStorage.getItem('users')).filter((elem) => {
       return elem.userName === obj.username && elem.password === obj.password
     });
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
     else if (filteredObj.length === 0) {
       alert("Please enetr the corect credentials");
     }
-    else if (filteredObj[0].password === 'user') {
+    else if (filteredObj[0].role === 'User') {
       this.router.navigateByUrl('/user')
       sessionStorage.setItem('AUTH', JSON.stringify(filteredObj[0]));
       this.sessioCheck.sendMessage(filteredObj[0]);
