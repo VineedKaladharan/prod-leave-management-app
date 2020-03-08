@@ -9,7 +9,8 @@
     /> -->
     <h2>Leave Request</h2>
     <p class="lead">
-      Pick the date from the calendar to start applying for the leave
+      Pick the date from the calendar to start applying for the leave (You can
+      select the multiple dates)
     </p>
   </div>
 
@@ -24,16 +25,9 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <!-- <h6 class="my-0">Product name</h6> -->
-            <div ngbDropdown class="d-inline-block">
-              <button
-                class="btn btn-outline-primary"
-                id="dropdownBasic1"
-                ngbDropdownToggle
-              >
-                Leave Type
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Earned Leave</button>
+            <div class="d-inline-block">
+              <div>
+                <!-- <button ngbDropdownItem>Earned Leave</button>
                 <button ngbDropdownItem>Advanced Earned Leave</button>
                 <button ngbDropdownItem>Leave Without pay</button>
                 <button ngbDropdownItem>Maternity Leave</button>
@@ -42,8 +36,27 @@
                 <button ngbDropdownItem>Special Day Off -Birthday</button>
                 <button ngbDropdownItem>
                   Special Day Off - Wedding Anniversary
-                </button>
+                </button> -->
+                <!-- <button ngbDropdownItem *ngFor="let leave of leaves">
+                  {{ leave.type }}
+                </button> -->
+                <select
+                  class="form-control"
+                  (change)="selectedDropDwon($event.target.value)"
+                >
+                  <option
+                    *ngFor="let leave of leaves"
+                    value="{{ leave.noOfLeave }}"
+                  >
+                    {{ leave.type }}
+                  </option>
+                </select>
               </div>
+              <!-- <ul>
+                <li *ngFor="let leave of leaves">
+                  {{ leave | json }}
+                </li>
+              </ul> -->
             </div>
           </div>
           <!-- <span class="text-muted">$12</span> -->
@@ -91,7 +104,13 @@
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-success">
             <h6 class="my-0">Available Balance</h6>
-            <input disabled type="text" class="form-control" id="usr" />
+            <input
+              [(ngModel)]="noOfLeave"
+              disabled
+              type="text"
+              class="form-control"
+              id="usr"
+            />
           </div>
           <!-- <span class="text-success">-$5</span> -->
         </li>

@@ -4,7 +4,7 @@ import * as users from './../../../json/listOfUsers.json'
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SessionCheckService } from 'src/app/services/session-check.service.js';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     userName: "",
     password: ""
   }
-  constructor(public router: Router, public sessioCheck: SessionCheckService) { }
+  constructor(public router: Router, public sessioCheck: SessionCheckService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     console.log("users", this.users.default.users);
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.sessioCheck.sendMessage(obj);
     }
     else if (filteredObj.length === 0) {
-      alert("Please enetr the corect credentials");
+      this.toastr.error('Credentials!', 'Please enter the correct');
     }
     else if (filteredObj[0].role === 'User') {
       this.router.navigateByUrl('/user')

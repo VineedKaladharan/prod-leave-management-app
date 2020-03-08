@@ -27,6 +27,45 @@ export class UserComponent implements OnInit {
     specialDayOffBirthday: 1,
     specialDayOffWedding: 1
   };
+  leaves: any = [
+    {
+      type: "EarnedLeave",
+      noOfLeave: 5
+    },
+    {
+      type: "AdvancedEarnedLeave",
+      noOfLeave: 5
+    },
+    {
+      type: "LeaveWithoutpay",
+      noOfLeave: -1
+    },
+    {
+      type: "maternityLeave",
+      noOfLeave: -1
+    },
+    {
+      type: "PaternityLeave",
+      noOfLeave: -1
+    },
+    {
+      type: "CompensatoryLeave",
+      noOfLeave: 3
+    },
+    {
+      type: "specialDayOffBirthday",
+      noOfLeave: 1
+    },
+    {
+      type: "specialDayOffWedding",
+      noOfLeave: 1
+    }
+
+  ]
+
+  selectedVal: any = '';
+  selectedOpl: any = '';
+  noOfLeave: any = '';
 
   newAbsenceObject = {
     from: "19-3-2020",
@@ -118,5 +157,10 @@ export class UserComponent implements OnInit {
     sessionStorage.setItem("listOfAbsence", JSON.stringify(sessionObjects));
     this.toastr.success('has been submitted!', 'New Leave request');
     this.newAbsence = false;
+  }
+
+  selectedDropDwon(e) {
+    console.log(JSON.stringify(e));
+    this.noOfLeave = e;
   }
 }
