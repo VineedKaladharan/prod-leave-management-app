@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "employeeName": "Vineed Kumar",
+      "role": "User",
+      "employeeID": "1065",
+      "email": "vineed@abc.com",
+      "userName": "vineed",
+      "password": "user"
+    },
+    {
+      "employeeName": "Nelson",
+      "role": "User",
+      "employeeID": "1066",
+      "email": "nelson@abc.com",
+      "userName": "nelson",
+      "password": "user"
+    },
+    {
+      "employeeName": "Gisle",
+      "role": "Manager",
+      "employeeID": "1067",
+      "email": "gisle@abc.com",
+      "userName": "gisle",
+      "password": "manager"
+    },
+    {
+      "employeeName": "Rita",
+      "role": "Manager",
+      "employeeID": "1068",
+      "email": "rita@abc.com",
+      "userName": "rita",
+      "password": "manager"
+    }
+  ]
+}

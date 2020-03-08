@@ -1,65 +1,88 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Index/th>
-            <th scope="col">From Date</th>
-            <th scope="col">To Date</th>
-            <th scope="col">Leave Type</th>
-            <th scope="col">Total Days</th>
-            <th scope="col">Name</th>
-            <th scope="col">Employee ID</th>
-            <th scope="col">Comment</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let data of tableData; index as i">
-            <th scope="row">{{ i }}</th>
-            <td>{{ data.from }}</td>
-            <td>{{ data.to }}</td>
-            <td>{{ data.leaveType }}</td>
-            <td>{{ data.todalDaya }}</td>
-            <td>{{ data.name }}</td>
-            <td>{{ data.employeeId }}</td>
-            <td>{{ data.commentfromUser }}</td>
-            <td>
-                <div style="display: inline-block; display: flex;justify-content: space-around;">
-                    <button type="button" (click)="open(approve)" class="btn btn-success">Approve</button>
-                    <button type="button" (click)="open(reject)" class="btn btn-danger">reject</button>
-                </div>
-            </td>
-            <ng-template #approve let-d="dismiss">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title"></h4>
-                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you really want to Approve it?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" (click)="close(i)">Save</button>
-                </div>
-            </ng-template>
-            <ng-template #reject let-d="dismiss">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title"></h4>
-                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you really want to Reject it?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" (click)="close('Rejected'+ ' ' + i)">Save</button>
-                </div>
-            </ng-template>            
-        </tr>
-        
-    </tbody>
+<table class="table table-striped" style="margin-top: 4%;">
+  <thead>
+    <tr>
+      <th scope="col">Index</th>
+      <th scope="col">From Date</th>
+      <th scope="col">To Date</th>
+      <th scope="col">Leave Type</th>
+      <th scope="col">Total Days</th>
+      <th scope="col">Name</th>
+      <th scope="col">Employee ID</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of tableData; index as i">
+      <th scope="row">{{ i }}</th>
+      <td>{{ data.from }}</td>
+      <td>{{ data.to }}</td>
+      <td>{{ data.leaveType }}</td>
+      <td>{{ data.todalDaya }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.employeeId }}</td>
+      <td>{{ data.commentfromUser }}</td>
+      <td>
+        <div
+          style="display: inline-block; display: flex;justify-content: space-around;"
+        >
+          <button type="button" (click)="open(approve)" class="btn btn-success">
+            Approve
+          </button>
+          <button type="button" (click)="open(reject)" class="btn btn-danger">
+            reject
+          </button>
+        </div>
+      </td>
+      <ng-template #approve let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"></h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="d('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you really want to Approve it?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="close(i)">
+            Save
+          </button>
+        </div>
+      </ng-template>
+      <ng-template #reject let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title"></h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="d('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you really want to Reject it?</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="close('Rejected' + ' ' + i)"
+          >
+            Save
+          </button>
+        </div>
+      </ng-template>
+    </tr>
+  </tbody>
 </table>
-<div *ngIf="noDataFound" class="container">    
-    <div class="well" style="text-align: center;">No Data Found...!</div>
-  </div>
+<div *ngIf="noDataFound" class="container">
+  <div class="well" style="text-align: center;">No Data Found...!</div>
+</div>

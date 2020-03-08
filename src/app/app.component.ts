@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,14 @@ export class AppComponent {
     employeeId: "1065",
     commentfromUser: "Test Comment"
   };
-  constructor(){
+  constructor(public router: Router) {
     sessionStorage.setItem(
       "listOfAbsence",
       JSON.stringify([this.newAbsenceObject])
     );
+  }
+  ngOnInit(): void {
+    this.router.navigateByUrl('/login');
+    sessionStorage.setItem("AUTH", '');
   }
 }

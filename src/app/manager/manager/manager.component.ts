@@ -17,25 +17,26 @@ export class ManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
   open(content) {
     this.modalService.open(content);
   }
-  
+
   close(content) {
-    console.log(content);
-    let split = content.split(' ');
-    if(split[0] === 'Rejected'){
+    let a = JSON.stringify(content);
+    console.log(a.split(' '))
+    let split = a.split(' ');
+    if (split[0] === 'Rejected') {
       this.modalService.dismissAll(content);
-      this.tableData.splice(0,1);
+      this.tableData.splice(0, 1);
     }
     else {
       this.modalService.dismissAll(content);
-      this.tableData.splice(0,1);
+      this.tableData.splice(0, 1);
     }
-    
-    if(this.tableData.length === 0){
+
+    if (this.tableData.length === 0) {
       this.noDataFound = true;
     }
   }

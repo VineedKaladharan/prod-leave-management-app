@@ -5,13 +5,15 @@ import { ManageUsersRoutingModule } from './manage-users-routing.module';
 import { AdminUiComponent } from './admin-ui/admin-ui.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './manage-users-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdminUiComponent],
   imports: [
     CommonModule,
     ManageUsersRoutingModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ]
 })
 export class ManageUsersModule { }
