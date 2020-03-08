@@ -1,0 +1,153 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <img
+      class="d-block mx-auto mb-4"
+      src="/docs/4.4/assets/brand/bootstrap-solid.svg"
+      alt=""
+      width="72"
+      height="72"
+    />
+    <h2>Leave Request</h2>
+    <p class="lead">
+      Pick the date from the calendar to start applying for the leave
+    </p>
+  </div>
+
+  <div class="row">
+    <div *ngIf="newAbsence" class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">New Absence </span>
+        <!-- <span class="badge badge-secondary badge-pill">3</span> -->
+        <ng-template #container> </ng-template>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <!-- <h6 class="my-0">Product name</h6> -->
+            <div ngbDropdown class="d-inline-block">
+              <button
+                class="btn btn-outline-primary"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+              >
+                Leave Type
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>Earned Leave</button>
+                <button ngbDropdownItem>Advanced Earned Leave</button>
+                <button ngbDropdownItem>Leave Without pay</button>
+                <button ngbDropdownItem>Maternity Leave</button>
+                <button ngbDropdownItem>Paternity Leave</button>
+                <button ngbDropdownItem>Compensatory Off</button>
+                <button ngbDropdownItem>Special Day Off -Birthday</button>
+                <button ngbDropdownItem>
+                  Special Day Off - Wedding Anniversary
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- <span class="text-muted">$12</span> -->
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">From</h6>
+            <input
+              [(ngModel)]="fromDateForInput"
+              disabled
+              type="input"
+              class="form-control"
+              id="usr"
+              name="usr"
+            />
+          </div>
+          <!-- <span class="text-muted">$8</span> -->
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">To</h6>
+            <input [(ngModel)]="toDateForInput" disabled type="text" class="form-control" id="usr" />
+          </div>
+          <!-- <span class="text-muted">$5</span> -->
+        </li>
+        <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-success">
+            <h6 class="my-0">Total Days</h6>
+            <input [(ngModel)]="todaldays" disabled type="text" class="form-control" id="usr" />
+          </div>
+          <!-- <span class="text-success">-$5</span> -->
+        </li>
+        <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-success">
+            <h6 class="my-0">Available Balance</h6>
+            <input disabled type="text" class="form-control" id="usr" />
+          </div>
+          <!-- <span class="text-success">-$5</span> -->
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <!-- <span>Comment</span> -->
+          <textarea
+            placeholder="comment"
+            class="form-control"
+            rows="5"
+            id="comment"
+            [(ngModel)]="comment"
+          ></textarea>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <!-- <span>Comment</span> -->
+          <button type="button" (click)="submitAbsence()" class="btn btn-success">Submit</button>
+          <button type="button" (click)="cancelled()" class="btn-danger">
+            Cancel
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Request for Leave</h4>
+      <form class="needs-validation" novalidate>
+        <!-- <div class="row"> -->
+        <hr class="mb-4" />
+        <ngb-datepicker
+          #dp
+          (dateSelect)="onDateSelection($event)"
+          [displayMonths]="2"
+          [dayTemplate]="t"
+          outsideDays="hidden"
+          (dateSelect)="onDateSelect($event)"
+        >
+        </ngb-datepicker>
+
+        <ng-template #t let-date let-focused="focused">
+          <span
+            class="custom-day"
+            [class.focused]="focused"
+            [class.range]="isRange(date)"
+            [class.faded]="isHovered(date) || isInside(date)"
+            (mouseenter)="hoveredDate = date"
+            (mouseleave)="hoveredDate = null"
+          >
+            {{ date.day }}
+          </span>
+        </ng-template>
+        <!-- <ul>
+          <li style="margin-top: 3%;margin-left: 31.5%;text-decoration: none;">
+            
+            <button type="button" class="btn btn-success">Apply for the new Absence</button>
+          </li>
+        </ul> -->
+        <hr />
+        <button
+          *ngIf="finishedSelecting"
+          (click)="clickedApplyForNewAbsence($event)"
+          type="button"
+          style="margin-left: 35%"
+          class="btn btn-success"
+        >
+          Apply for the new Absence
+        </button>
+        <pre>From: {{ fromDate | json }} </pre>
+        <pre>To: {{ toDate | json }} </pre>
+      </form>
+    </div>
+  </div>
+</div>
