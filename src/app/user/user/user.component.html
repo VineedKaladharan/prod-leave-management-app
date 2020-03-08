@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container" style="margin-top: 1%;">
   <div class="py-5 text-center">
-    <img
+    <!-- <img
       class="d-block mx-auto mb-4"
       src="/docs/4.4/assets/brand/bootstrap-solid.svg"
       alt=""
       width="72"
       height="72"
-    />
+    /> -->
     <h2>Leave Request</h2>
     <p class="lead">
       Pick the date from the calendar to start applying for the leave
@@ -65,14 +65,26 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <h6 class="my-0">To</h6>
-            <input [(ngModel)]="toDateForInput" disabled type="text" class="form-control" id="usr" />
+            <input
+              [(ngModel)]="toDateForInput"
+              disabled
+              type="text"
+              class="form-control"
+              id="usr"
+            />
           </div>
           <!-- <span class="text-muted">$5</span> -->
         </li>
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-success">
             <h6 class="my-0">Total Days</h6>
-            <input [(ngModel)]="todaldays" disabled type="text" class="form-control" id="usr" />
+            <input
+              [(ngModel)]="todaldays"
+              disabled
+              type="text"
+              class="form-control"
+              id="usr"
+            />
           </div>
           <!-- <span class="text-success">-$5</span> -->
         </li>
@@ -95,7 +107,13 @@
         </li>
         <li class="list-group-item d-flex justify-content-between">
           <!-- <span>Comment</span> -->
-          <button type="button" (click)="submitAbsence()" class="btn btn-success">Submit</button>
+          <button
+            type="button"
+            (click)="submitAbsence()"
+            class="btn btn-success"
+          >
+            Submit
+          </button>
           <button type="button" (click)="cancelled()" class="btn-danger">
             Cancel
           </button>
@@ -145,8 +163,8 @@
         >
           Apply for the new Absence
         </button>
-        <pre>From: {{ fromDate | json }} </pre>
-        <pre>To: {{ toDate | json }} </pre>
+        <!-- <pre>From: {{ fromDate | json }} </pre>
+        <pre>To: {{ toDate | json }} </pre> -->
       </form>
     </div>
   </div>

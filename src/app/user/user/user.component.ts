@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbDate, NgbCalendar } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-user",
@@ -38,7 +39,7 @@ export class UserComponent implements OnInit {
   };
   comment: any;
 
-  constructor(calendar: NgbCalendar) {
+  constructor(calendar: NgbCalendar, private toastr: ToastrService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), "d", 1);
   }
@@ -115,5 +116,7 @@ export class UserComponent implements OnInit {
     let a = sessionObjects.push(this.newAbsenceObject);
     console.log(JSON.parse(a));
     sessionStorage.setItem("listOfAbsence", JSON.stringify(sessionObjects));
+    this.toastr.success('has been submitted!', 'New Leave request');
+    this.newAbsence = false;
   }
 }
