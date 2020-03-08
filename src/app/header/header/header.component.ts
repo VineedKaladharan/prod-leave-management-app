@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     this.hasLoggedout = true;
     this.hasLoggedIn = false;
-    sessionStorage.setItem("AUTH", '');
+    sessionStorage.setItem("AUTH", "NULL");
     this.router.navigateByUrl('/login');
 
   }
